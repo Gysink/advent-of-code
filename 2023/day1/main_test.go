@@ -1,7 +1,6 @@
 package main
 
 import (
-	"reflect"
 	"testing"
 )
 
@@ -29,18 +28,6 @@ func TestStringToInt(t *testing.T) {
 	got := stringToInt(input)
 	if got != want {
 		t.Errorf("wrong convertion, got=%d, want=%d", got, want)
-	}
-}
-
-func TestSplitByLine(t *testing.T) {
-	input := "these\n" +
-		"are\n" +
-		"some\n" +
-		"lines\n"
-	want := []string{"these", "are", "some", "lines"}
-	got := splitByLine(input)
-	if !reflect.DeepEqual(got, want) {
-		t.Errorf("wrong splitByLine, got=%s, want=%s", got, want)
 	}
 }
 

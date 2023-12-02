@@ -1,6 +1,7 @@
 package main
 
 import (
+	"advent-of-code/pkg/util"
 	"fmt"
 	"log"
 	"os"
@@ -27,7 +28,7 @@ func main() {
 }
 
 func getSumOfCalibrations(input string) int {
-	inputByLine := splitByLine(input)
+	inputByLine := util.SplitByLine(input)
 	var sum int
 	for _, l := range inputByLine {
 		cal := getCalibrationOfLine(l)
@@ -46,17 +47,6 @@ func stringToInt(input string) int {
 	res, err := strconv.Atoi(input)
 	if err != nil {
 		log.Fatalln("cannot convert string to int:", input)
-	}
-	return res
-}
-
-func splitByLine(input string) []string {
-	var res []string
-	splitted := strings.Split(input, fmt.Sprintln())
-	for _, s := range splitted {
-		if s != "" {
-			res = append(res, s)
-		}
 	}
 	return res
 }
