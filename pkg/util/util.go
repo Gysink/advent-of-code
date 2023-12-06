@@ -30,3 +30,13 @@ func StringToInt(input string) int {
 	}
 	return res
 }
+
+func StringsToIntArray(strings []string) []int {
+	var ints []int
+	for _, s := range strings {
+		if s != "" {
+			ints = append(ints, StringToInt(s))
+		}
+	}
+	return ints
+}
