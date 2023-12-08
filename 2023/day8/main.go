@@ -2,15 +2,15 @@ package main
 
 import (
 	"log"
+	"math"
 	"os"
 	"strings"
 )
 
-var LineBreak = "\n"
+var LineBreak = "\r\n"
 
 func main() {
-	data, err := os.ReadFile("2023/day8/input.txt")
-	//data, err := os.ReadFile("input.txt")
+	data, err := os.ReadFile("input.txt")
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -61,7 +61,7 @@ func walk(startPoint Point, points map[string]Point, instructions []string) int 
 
 // Part2
 
-func solve2(input string) int64 {
+func solve2(input string) float64 {
 	byLine := strings.Split(input, LineBreak)
 
 	instructions := strings.Split(byLine[0], "")
@@ -75,23 +75,20 @@ func solve2(input string) int64 {
 		points[p.current] = p
 	}
 
-	steps := calcLcm(getStartPoints(points), points, instructions)
+	steps := calcLcmSum(getStartPoints(points), points, instructions)
 	return steps
 }
 
-func calcLcm(startPoints []Point, points map[string]Point, instructions []string) int64 {
-	currentPoints := startPoints
-
+func calcLcmSum(startPoints []Point, points map[string]Point, instructions []string) float64 {
 	var res []int64
-	for _, p := range currentPoints {
+	for _, p := range startPoints {
 		res = append(res, walkEndsWith(p, points, instructions))
 	}
 
-	sum := res[0]
+	sum := float64(res[0])
 	for i := 1; i < len(res); i = i + 1 {
-		sum = lcm(sum, res[i])
+		sum = lcm(sum, float64(res[i]))
 	}
-
 	return sum
 }
 
@@ -127,18 +124,14 @@ func getStartPoints(points map[string]Point) []Point {
 	return starts
 }
 
-func lcm(temp1 int64, temp2 int64) int64 {
-	var lcmnum int64 = 1
-	if temp1 > temp2 {
-		lcmnum = temp1
-	} else {
-		lcmnum = temp2
-	}
+func lcm(a, b float64) float64 {
+	return (a * b) / gcd(a, b)
+}
 
-	for {
-		if lcmnum%temp1 == 0 && lcmnum%temp2 == 0 {
-			return lcmnum
-		}
-		lcmnum++
+func gcd(a float64, b float64) float64 {
+	if b == 0 {
+		return a
+	} else {
+		return gcd(b, math.Mod(a, b))
 	}
 }

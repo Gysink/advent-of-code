@@ -50,10 +50,10 @@ func TestPart2(t *testing.T) {
 		"22Z = (22B, 22B)\n" +
 		"XXX = (XXX, XXX)"
 
-	want := int64(6)
+	want := float64(6)
 	got := solve2(input)
 	if got != want {
-		t.Errorf("wrong steps: got=%d, want=%d", got, want)
+		t.Errorf("wrong steps: got=%f, want=%f", got, want)
 	}
 }
 
@@ -74,9 +74,9 @@ func TestPart2_2(t *testing.T) {
 		"33Z = (33B, 33B)\n" +
 		"XXX = (XXX, XXX)"
 
-	want := int64(6)
+	want := float64(6)
 	got := solve2(input)
 	if got != want {
-		t.Errorf("wrong steps: got=%d, want=%d", got, want)
+		t.Errorf("wrong steps: got=%f, want=%f", got, want)
 	}
 }
