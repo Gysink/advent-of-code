@@ -1,15 +1,15 @@
 package util
 
 import (
-	"fmt"
 	"log"
+	"runtime"
 	"strconv"
 	"strings"
 )
 
 func SplitByLine(input string) []string {
 	var res []string
-	splitted := strings.Split(input, fmt.Sprintln())
+	splitted := strings.Split(input, GetLineBreak())
 	for _, s := range splitted {
 		if s != "" {
 			res = append(res, s)
@@ -39,4 +39,11 @@ func StringsToIntArray(strings []string) []int {
 		}
 	}
 	return ints
+}
+
+func GetLineBreak() string {
+	if runtime.GOOS == "windows" {
+		return "\r\n"
+	}
+	return "\n"
 }
