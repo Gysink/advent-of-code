@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"io/fs"
 	"log"
 	"os"
 	"text/template"
@@ -60,7 +59,7 @@ func createFile(name string) *os.File {
 }
 
 func createFolder(name string) {
-	err := os.Mkdir(name, fs.ModeDir)
+	err := os.Mkdir(name, os.FileMode(0755))
 	if err != nil {
 		log.Fatalln(err)
 	}
