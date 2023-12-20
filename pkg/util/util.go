@@ -2,6 +2,7 @@ package util
 
 import (
 	"log"
+	"math"
 	"runtime"
 	"strconv"
 	"strings"
@@ -46,4 +47,16 @@ func GetLineBreak() string {
 		return "\r\n"
 	}
 	return "\n"
+}
+
+func CalculateLCM(a, b float64) float64 {
+	return (a * b) / CalculateGCD(a, b)
+}
+
+func CalculateGCD(a float64, b float64) float64 {
+	if b == 0 {
+		return a
+	} else {
+		return CalculateGCD(b, math.Mod(a, b))
+	}
 }
