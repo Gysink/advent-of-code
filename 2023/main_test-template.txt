@@ -16,12 +16,12 @@ func Test_Part1(t *testing.T) {
 
 // Part 2
 
-func Test_Part2(t *testing.T) {
-	input := "" +
-		""
-	want := 0
-	got := solve1(input)
-	if got != want {
-		t.Errorf("wrong result: want=%d, got=%d", want, got)
-	}
-}
+//func Test_Part2(t *testing.T) {
+//	input := "" +
+//		""
+//	want := 0
+//	got := solve2(input)
+//	if got != want {
+//		t.Errorf("wrong result: want=%d, got=%d", want, got)
+//	}
+//}
