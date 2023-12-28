@@ -32,6 +32,14 @@ func StringToInt(input string) int {
 	return res
 }
 
+func StringToFloat(input string) float64 {
+	res, err := strconv.Atoi(input)
+	if err != nil {
+		log.Fatalln("cannot convert string to int:", input)
+	}
+	return float64(res)
+}
+
 func StringsToIntArray(strings []string) []int {
 	var ints []int
 	for _, s := range strings {
